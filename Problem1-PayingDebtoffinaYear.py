@@ -1,14 +1,11 @@
-def debtPay(balance,annualInterestRate,monthlyPaymentRate):
-	month = 0
-	while month < 12:
+def debtProb(balance, annualInterestRate, monthlyPaymentRate):
+    for month in range(12):
+        monthly_interest = annualInterestRate / 12
+        min_monthly_pay = monthlyPaymentRate * balance
+        monthly_unpaid_bal = balance - min_monthly_pay
+        updated_balance = round(monthly_unpaid_bal + (monthly_interest * monthly_unpaid_bal), 2)
+        #month += 1
+        balance =  updated_balance
+    print ("Remaining balance: " + str(balance))
 
-		interest_monthly = annualInterestRate / 12 
-		minimum_payment = monthlyPaymentRate * balance
-		unpaid_balance = balance - minimum_payment
-		new_balance = round(((unpaid_balance) + (interest_monthly * unpaid_balance)), 2)
-		
-		month += 1
-		print("Month " + str(month) + " remaining balance: " + str(new_balance))
-		balance = new_balance
-
-	return balance
+debtProb(balance, annualInterestRate, monthlyPaymentRate)
